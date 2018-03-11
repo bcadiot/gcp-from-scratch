@@ -6,6 +6,13 @@ variable "network" {
   default = "default"
 }
 
+variable "deploy_region" {
+  default = [
+      "europe-west1",
+      "us-west1"
+    ]
+}
+
 variable "zones" {
   default = [
       "b",

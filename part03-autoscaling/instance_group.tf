@@ -11,13 +11,16 @@ resource "google_compute_health_check" "autohealing" {
   }
 }
 
+# Instance group
+
 resource "google_compute_region_instance_group_manager" "http-simple" {
+  count = "${length(var.deploy_region)}"
   name = "gcp-onboard-http-simple"
 
   base_instance_name = "gcp-onboard-http-simple"
   instance_template  = "${google_compute_instance_template.http-simple.self_link}"
   // update_strategy    = "RESTART"
-  region               = "${var.region}"
+  region = "${element(var.deploy_region, count.index)}"
 
   // target_pools = ["${google_compute_target_pool.appserver.self_link}"]
   // target_size  = 2
@@ -34,9 +37,10 @@ resource "google_compute_region_instance_group_manager" "http-simple" {
 }
 
 resource "google_compute_region_autoscaler" "http-simple" {
+  count = "${length(var.deploy_region)}"
   name   = "http-simple"
-  region = "${var.region}"
-  target = "${google_compute_region_instance_group_manager.http-simple.self_link}"
+  region = "${element(var.deploy_region, count.index)}"
+  target = "${element(google_compute_region_instance_group_manager.http-simple.*.self_link, count.index)}"
 
   autoscaling_policy = {
     max_replicas    = 3
