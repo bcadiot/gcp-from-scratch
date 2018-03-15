@@ -13,3 +13,5 @@ Check if your credentials are well configured : https://www.terraform.io/docs/pr
 $ terraform init
 $ terraform apply
 ```
+
+The related blog post is available here (in French currently) : http://blog.wescale.fr/2018/03/08/google-cloud-from-scratch-commencer-par-la-base/
