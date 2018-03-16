@@ -43,7 +43,7 @@ resource "google_compute_region_autoscaler" "http-simple" {
   target = "${element(google_compute_region_instance_group_manager.http-simple.*.self_link, count.index)}"
 
   autoscaling_policy = {
-    max_replicas    = 4
+    max_replicas    = 3
     min_replicas    = 1
     cooldown_period = 60
 

@@ -5,7 +5,7 @@ resource "google_compute_global_address" "default" {
 resource "google_compute_global_forwarding_rule" "default" {
   name       = "default-rule"
   target     = "${google_compute_target_http_proxy.default.self_link}"
-  port_range = "80"
+  port_range = "80-80"
   ip_address = "${google_compute_global_address.default.self_link}"
 }
 
