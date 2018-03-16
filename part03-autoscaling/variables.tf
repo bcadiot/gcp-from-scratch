@@ -9,7 +9,8 @@ variable "network" {
 variable "deploy_region" {
   default = [
       "europe-west1",
-      "us-west1"
+      "us-west1",
+      "asia-northeast1"
     ]
 }
 
