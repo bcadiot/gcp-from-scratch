@@ -19,11 +19,7 @@ resource "google_compute_region_instance_group_manager" "http-simple" {
 
   base_instance_name = "gcp-onboard-http-simple"
   instance_template  = "${google_compute_instance_template.http-simple.self_link}"
-  // update_strategy    = "RESTART"
   region = "${element(var.deploy_region, count.index)}"
-
-  // target_pools = ["${google_compute_target_pool.appserver.self_link}"]
-  // target_size  = 2
 
   named_port {
     name = "http"

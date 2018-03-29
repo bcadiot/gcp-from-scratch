@@ -1,6 +1,5 @@
 resource "google_compute_instance_template" "http-simple" {
   name        = "gcp-onboard-http-simple-v3"
-  // description = "This template is used to create app server instances."
 
   tags = ["http"]
 
@@ -8,7 +7,6 @@ resource "google_compute_instance_template" "http-simple" {
     environment = "dev"
   }
 
-  // instance_description = "description assigned to instances"
   machine_type         = "${var.instance_type}"
   can_ip_forward       = false
 
