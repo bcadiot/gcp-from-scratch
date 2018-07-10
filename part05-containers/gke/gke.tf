@@ -12,16 +12,6 @@ resource "google_container_cluster" "gcp_from_scratch" {
     ]
   }
 
-  addons_config {
-    http_load_balancing {
-      disabled = true
-    }
-
-    horizontal_pod_autoscaling {
-      disabled = true
-    }
-  }
-
   maintenance_policy {
     daily_maintenance_window {
       start_time = "03:00"
